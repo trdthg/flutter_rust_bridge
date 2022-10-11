@@ -366,8 +366,8 @@ brew install desdaemon/repo/flutter_rust_bridge_codegen
 <tr><td><code>String</code></td><td><code>String</code></td></tr>
 <tr><td><code>()</code></td><td><code>void</code></td></tr>
 </tbody></table>
-<p>Types from <code>chrono</code> crate are supported as a feature, see <a href="feature/lang_chrono.html">here</a>.
-Types from <code>uuid</code> crate are supported as a feature, see <a href="feature/lang_uuid.html">here</a>.</p>
+<p>Types from <code>chrono</code> crate are supported as a feature, see <a href="../../en/feature/lang_chrono.html">here</a>.
+Types from <code>uuid</code> crate are supported as a feature, see <a href="../../en/feature/lang_uuid.html">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vec-和数组"><a class="header" href="#vec-和数组">Vec 和数组</a></h1>
 <h2 id="vecu8-veci8-"><a class="header" href="#vecu8-veci8-"><code>Vec&lt;u8&gt;</code>, <code>Vec&lt;i8&gt;</code>, ...</a></h2>
 <p>在 Dart 中，当你想表达一个长字节数组，例如大图片或一些二进制 blob，通常会使用 <code>Uint8List</code> 而不是 <code>List&lt;int&gt;</code>，因为前者的性能更好。<code>flutter_rust_bridge</code> 也为你考虑到了这一点。当你使用到 <code>Vec&lt;u8&gt;</code>（或 <code>Vec&lt;i8&gt;</code>，<code>Vec&lt;i32&gt;</code>，等）时，它们会被翻译成 <code>Uint8List</code> 或其它类似的结构。</p>
