@@ -220,7 +220,7 @@ upon invoking <code>flutter run</code>. This method is explained more in detail 
       'zh'
     ];
 
-    (function langs() {
+    (function switch_lang() {
       var html = document.querySelector('html');
       var langToggleButton = document.getElementById('lang-toggle');
       var langPopup = document.getElementById('lang-list');
@@ -246,12 +246,10 @@ upon invoking <code>flutter run</code>. This method is explained more in detail 
 
       langPopup.addEventListener('click', function (e) {
         var lang = e.target.id || e.target.parentElement.id;
-        window.location.pathname = window.location.pathname
-          .split('/')
-          .map((s, idx) => {
-            return idx == 2 ? lang : s;
-          })
-          .join('/');
+        var parts = window.location.pathname.split('/');
+        var index = parts.findIndex(s => langs.includes(s));
+        parts[index] = lang;
+        window.location.pathname = parts.join('/');
       });
 
       langPopup.addEventListener('focusout', function (e) {

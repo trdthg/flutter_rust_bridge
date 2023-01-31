@@ -294,7 +294,7 @@ However, it won't work just yet; we will wire up our Flutter package to use our 
       'zh'
     ];
 
-    (function langs() {
+    (function switch_lang() {
       var html = document.querySelector('html');
       var langToggleButton = document.getElementById('lang-toggle');
       var langPopup = document.getElementById('lang-list');
@@ -320,12 +320,10 @@ However, it won't work just yet; we will wire up our Flutter package to use our 
 
       langPopup.addEventListener('click', function (e) {
         var lang = e.target.id || e.target.parentElement.id;
-        window.location.pathname = window.location.pathname
-          .split('/')
-          .map((s, idx) => {
-            return idx == 2 ? lang : s;
-          })
-          .join('/');
+        var parts = window.location.pathname.split('/');
+        var index = parts.findIndex(s => langs.includes(s));
+        parts[index] = lang;
+        window.location.pathname = parts.join('/');
       });
 
       langPopup.addEventListener('focusout', function (e) {
