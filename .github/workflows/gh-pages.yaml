@@ -53,7 +53,7 @@ jobs:
               MDBOOK_OUTPUT__HTML__SITE_URL=/flutter-rust-bridge/$po_lang/ \
               mdbook build -d book/$po_lang
               # (cd book/$po_lang/exerciser && zip --recurse-paths ../html/comprehensive-rust-exercises.zip comprehensive-rust-exercises/)
-              mv book/$po_lang/html book/html/$po_lang
+              # mv book/$po_lang/html book/html/$po_lang
               echo "::endgroup::"
           done
 
@@ -63,7 +63,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: book/book/html
+          path: book/book
 
       - name: Deploy to GitHub Pages
         id: deployment
