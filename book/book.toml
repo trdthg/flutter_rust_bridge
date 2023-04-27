@@ -5,7 +5,13 @@ multilingual = false
 src = "src"
 title = "flutter_rust_bridge"
 
+[build]
+extra-watch-dirs = ["po"]
+
 [preprocessor]
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
+
+[preprocessor.gettext]
+after = ["links"]
