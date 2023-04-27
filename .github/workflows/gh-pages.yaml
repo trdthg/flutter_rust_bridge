@@ -38,14 +38,15 @@ jobs:
         uses: ./.github/workflows/install-mdbook
 
       - name: Build course in English
-        run: cd book && mdbook build -d book
+        working-directory: ./book
+        run: mdbook build -d book
 
       # - name: Zip exercise templates
       #   run: cd book/exerciser && zip --recurse-paths ../html/comprehensive-rust-exercises.zip comprehensive-rust-exercises/
 
       - name: Build all translations
+        working-directory: ./book
         run: |
-          cd book
           for po_lang in ${{ env.LANGUAGES }}; do
               echo "::group::Building $po_lang translation"
               MDBOOK_BOOK__LANGUAGE=$po_lang \
