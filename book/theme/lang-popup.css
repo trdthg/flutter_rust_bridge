@@ -1,0 +1,8 @@
+#language-list {
+    left: auto;
+    left: 120px;
+}
+
+#language-list a {
+    color: inherit;
+}
