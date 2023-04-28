@@ -142,19 +142,12 @@
                             <i class="fa fa-search"></i>
                         </button>
                         {{/if}}
-                        <button id="language-toggle" class="icon-button" type="button"
-                                title="Change language" aria-label="Change language"
-                                aria-haspopup="true" aria-expanded="false"
-                                aria-controls="language-list">
+                        <button id="language-toggle" class="icon-button" type="button" title="Change language" aria-label="Change language" aria-haspopup="true" aria-expanded="false" aria-controls="language-list">
                             <i class="fa fa-globe"></i>
                         </button>
                         <ul id="language-list" class="theme-popup" aria-label="Languages" role="menu">
-                          <li role="none"><button role="menuitem" class="theme">
-                              <a id="en">English</a>
-                          </button></li>
-                          <li role="none"><button role="menuitem" class="theme">
-                              <a id="zh">简体中文</a>
-                          </button></li>
+                          <li role="none"><button role="menuitem" class="theme"><a id="en">English</a></button></li>
+                          <li role="none"><button role="menuitem" class="theme"><a id="zh">简体中文</a></button></li>
                         </ul>
 
                         <script>
@@ -162,6 +155,12 @@
                           let langList = document.getElementById("language-list");
                           langToggle.addEventListener("click", (event) => {
                               langList.style.display = langList.style.display == "block" ? "none" : "block";
+                          });
+                          // Should not be needed, but it works around an issue on macOS & iOS: https://github.com/rust-lang/mdBook/issues/628
+                          document.addEventListener('click', function(e) {
+                              if (langToggle.style.display === 'block' && !langToggle.contains(e.target) && !langToggle.contains(e.target)) {
+                                langList.style.display = 'none';
+                              }
                           });
                           let selectedLang = document.getElementById("{{ language }}");
                           selectedLang.parentNode.classList.add("theme-selected");
