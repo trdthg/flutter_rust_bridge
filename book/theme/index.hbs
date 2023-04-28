@@ -176,7 +176,6 @@
         console.log("document clicked: " + langPopup.style.display)
         if (langPopup.style.display === 'block' && !langToggleButton.contains(e.target) && !langPopup.contains(e.target)) {
             hideLangs();
-        console.log("after2: " + langPopup.style.display)
         }
     });
                           let selectedLang = document.getElementById("{{ language }}");
@@ -192,7 +191,8 @@
                           // The page path (mdbook only gives us
                           // access to the path to the Markdown file).
                           let path = "{{ path }}".replace(/\.md$/, ".html");
-                          for (let lang of langList.querySelectorAll("a")) {
+                          for (let lang of langPopup.querySelectorAll("a")) {
+                            console.log(lang)
                               if (lang.id == "en") {
                                   lang.href = `${full_path_to_root}${path}`;
                               } else {
