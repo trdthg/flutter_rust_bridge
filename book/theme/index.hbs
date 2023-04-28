@@ -151,17 +151,31 @@
                         </ul>
 
                         <script>
-                          let langToggle = document.getElementById("language-toggle");
-                          let langList = document.getElementById("language-list");
-                          langToggle.addEventListener("click", (event) => {
-                              langList.style.display = langList.style.display == "block" ? "none" : "block";
-                          });
-                          // Should not be needed, but it works around an issue on macOS & iOS: https://github.com/rust-lang/mdBook/issues/628
-                          document.addEventListener('click', function(e) {
-                              if (langToggle.style.display === 'block' && !langToggle.contains(e.target) && !langToggle.contains(e.target)) {
-                                langList.style.display = 'none';
-                              }
-                          });
+                          let langToggleButton = document.getElementById("language-toggle");
+                          let langPopup = document.getElementById("language-list");
+
+    function hideLangs() {
+        langPopup.style.display = 'none';
+        langToggleButton.setAttribute('aria-expanded', false);
+        langToggleButton.focus();
+    }
+    function showLangs() {
+        langPopup.style.display = 'block';
+        langToggleButton.setAttribute('aria-expanded', true);
+    }
+
+    themeToggleButton.addEventListener('click', function () {
+        if (langPopup.style.display === 'block') {
+            hideLangs();
+        } else {
+            showLangs();
+        }
+    });
+    document.addEventListener('click', function(e) {
+        if (langPopup.style.display === 'block' && !langToggleButton.contains(e.target) && !langPopup.contains(e.target)) {
+            hideLangs();
+        }
+    });
                           let selectedLang = document.getElementById("{{ language }}");
                           selectedLang.parentNode.classList.add("theme-selected");
 
