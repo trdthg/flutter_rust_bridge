@@ -142,11 +142,6 @@
                             <i class="fa fa-search"></i>
                         </button>
                         {{/if}}
-                    </div>
-
-                    <h1 class="menu-title">{{ book_title }}</h1>
-
-                    <div class="right-buttons">
                         <button id="language-toggle" class="icon-button" type="button"
                                 title="Change language" aria-label="Change language"
                                 aria-haspopup="true" aria-expanded="false"
@@ -190,6 +185,11 @@
                           }
                         </script>
 
+                    </div>
+
+                    <h1 class="menu-title">{{ book_title }}</h1>
+
+                    <div class="right-buttons">
                         {{#if print_enable}}
                         <a href="{{ path_to_root }}print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
